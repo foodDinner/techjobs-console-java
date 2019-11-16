@@ -111,13 +111,17 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-
+        boolean printCheck = false;
         for (HashMap<String, String> testList : someJobs) {
             System.out.println("*****");
             for (Map.Entry<String, String> post : testList.entrySet()) {
                 System.out.println(post.getKey() + " : " + post.getValue());
             }
             System.out.println("*****" + "\n");
+            printCheck = true;
+        }
+        if (!printCheck) {
+            System.out.println("\nNo entries to list.");
         }
     }
 }
