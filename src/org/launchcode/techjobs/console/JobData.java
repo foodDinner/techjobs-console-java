@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.*;
+import java.util.List;
 
 /**
  * Created by LaunchCode
@@ -76,7 +76,7 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue.toLowerCase().contains(value.toLowerCase())) {
                 jobs.add(row);
             }
         }
@@ -92,19 +92,26 @@ public class JobData {
         for (HashMap<String, String> row : allJobs) {
 
                 for (String key : row.keySet()) {
-                    if (key.contains(value)) {
-                        jobs.add(row);
+                    if (key.toLowerCase().contains(value.toLowerCase())) {
+                        if(!jobs.contains(row)) {
+                            jobs.add(row);
+                        }
                     }
                 }
 
                 for (String entry : row.values()) {
-                    if (entry.contains(value)) {
-                        jobs.add(row);
+                    if (entry.toLowerCase().contains(value.toLowerCase())) {
+                        if (!jobs.contains(row)) {
+                            jobs.add(row);
+                        }
                     }
                 }
             }
         return jobs;
     }
+
+//    public static ArrayList everyDamnJob = (ArrayList) allJobs.clone();
+
 
     /**
      * Read in data from a CSV file and store it in a list
